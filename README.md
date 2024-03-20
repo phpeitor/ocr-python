@@ -9,17 +9,19 @@ Herramientas:
 Para utilizar este proyecto, sigue estos pasos:
 
 - Clona este repositorio en tu máquina local.
-- Instala las dependencias streamlit, numpy, pillow, pytesseract, regex.
+- Instala las dependencias necesarias ejecutando el siguiente comando en tu terminal:
   
 ```
     pip install streamlit numpy pillow pytesseract regex
 ```
   
-- Ejecuta streamlit run para abrir el proyecto
+- Ejecuta el siguiente comando para iniciar el proyecto:
 
 ```
     python -m streamlit run main.py
 ```
 
-[![Video](https://img.youtube.com/vi/K9n4jRPH-94/0.jpg)](https://www.youtube.com/watch?v=K9n4jRPH-94)
+[![Video](https://img.youtube.com/vi/K9n4jRPH-94/0.jpg)](https://www.youtube.com/watch?v=K9n4jRPH-94)  
+[Ver demo](https://www.youtube.com/watch?v=K9n4jRPH-94)
+
 
