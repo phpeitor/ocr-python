@@ -22,4 +22,5 @@ Para utilizar este proyecto, sigue estos pasos:
 ```
 
 [![](https://metadata.com.pe/images/works/goku_rxjs.png)](https://youtu.be/K9n4jRPH-94)
-![](https://metadata.com.pe/images/works/goku_rxjs.png)
+[![Video](https://img.youtube.com/vi/K9n4jRPH-94/0.jpg)](https://www.youtube.com/watch?v=K9n4jRPH-94)
+
