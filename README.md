@@ -2,7 +2,7 @@
 
 Objetivo: El programa tiene como objetivo recibir una imagen como entrada, reconocer los caracteres que contiene y extraerlos. Una vez que se ha extraído el texto, el programa señala el porcentaje de palabras, buenas o malas, existen en el texto de la imagen basándose en un pequeño conjunto de palabras preregistradas. Finalmente, el programa busca encontrar documentos de indentidad.
 
-Herramientas:
+Herramientas:  
 ✔️ Pytesseract: biblioteca Python para aplicaciones OCR, documentación (https://pypi.org/project/pytesseract/).  
 ✔️ Streamlit: marco Python para crear la página web, documentación (https://docs.streamlit.io/en/stable/).
 
@@ -20,4 +20,6 @@ Para utilizar este proyecto, sigue estos pasos:
 ```
     python -m streamlit run main.py
 ```
-[![](https://markdown-videos.deta.dev/youtube/K9n4jRPH-94)](https://youtu.be/K9n4jRPH-94)
+
+[![](https://metadata.com.pe/images/works/goku_rxjs.png)](https://youtu.be/K9n4jRPH-94)
+![](https://metadata.com.pe/images/works/goku_rxjs.png)
