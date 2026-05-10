@@ -2,3 +2,5 @@ AMAR
 PERRO
 PERU
 GANADOR
+S/
+$

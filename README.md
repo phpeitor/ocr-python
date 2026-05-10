@@ -1,4 +1,4 @@
-# OCR (Optical Character Recognition) Python 🐍💻
+# OCR Python 🐍
 
 Objetivo: El programa tiene como objetivo recibir una imagen como entrada, reconocer los caracteres que contiene y extraerlos. Una vez que se ha extraído el texto, el programa señala el porcentaje de palabras, buenas o malas, existen en el texto de la imagen basándose en un pequeño conjunto de palabras preregistradas. Finalmente, el programa busca encontrar documentos de indentidad.
 
