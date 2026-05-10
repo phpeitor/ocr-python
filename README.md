@@ -1,6 +1,10 @@
-# TextLens OCR
+## TextLens OCR 🐍
+[![forthebadge](http://forthebadge.com/images/badges/made-with-python.svg))](https://www.linkedin.com/in/drphp/)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
-TextLens es una aplicacion web creada con Streamlit para extraer texto desde imagenes usando Tesseract OCR. Tambien analiza el texto detectado para encontrar DNI, fechas y palabras positivas o negativas definidas en archivos configurables.
+[![Video](https://img.youtube.com/vi/K9n4jRPH-94/0.jpg)](https://www.youtube.com/watch?v=K9n4jRPH-94)  
+
+[![Video Demo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=K9n4jRPH-94)
 
 ## Caracteristicas
 
