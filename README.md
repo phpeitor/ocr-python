@@ -24,7 +24,7 @@
 - pip.
 - Tesseract OCR instalado en el sistema.
 
-## Instalacion De Tesseract OCR
+## Instalacion Tesseract OCR
 
 ### Windows
 
@@ -48,7 +48,7 @@ Si el comando no funciona, configura la ruta en tu archivo `.env`:
 TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
 ```
 
-## Instalacion Del Proyecto
+## Instalacion Proyecto
 
 1. Clona el repositorio:
 
@@ -81,7 +81,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 python -m pip install -r requirements.txt
 ```
 
-## Configuracion Con .env
+## Configuracion .env
 
 El proyecto incluye `.env.example` como plantilla. Crea tu archivo `.env` local:
 
@@ -113,7 +113,7 @@ OCR_LANGUAGE=spa
 
 Para usar `spa`, debes tener instalado el paquete de idioma espanol de Tesseract.
 
-## Ejecutar La App
+## Ejecutar App
 
 Desde la raiz del proyecto:
 
@@ -138,7 +138,7 @@ Abre esa URL en tu navegador.
 5. Activa o desactiva el analisis desde el panel lateral.
 6. Revisa DNI, fechas, palabras positivas y palabras negativas detectadas.
 
-## Personalizar Palabras Detectadas
+## Personalizar Palabras
 
 Edita estos archivos:
 
@@ -174,7 +174,7 @@ ocr-python/
 └── README.md
 ```
 
-## Solucion De Problemas
+## Solucion Bugs
 
 ### `tesseract is not installed or it's not in your PATH`
 
