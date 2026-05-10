@@ -2,14 +2,17 @@ import streamlit as st
 from PIL import Image
 import pytesseract
 
+from config import APP_NAME, APP_PAGE_ICON, TESSERACT_CMD, get_ocr_options
 import functions.functions as fc
-from functions.ui import APP_NAME, apply_styles, render_feature_cards, render_header, render_text_output
+from functions.ui import apply_styles, render_feature_cards, render_header, render_text_output
 
 
 class OCR:
 
     def __init__(self):
-        st.set_page_config(page_title=APP_NAME, page_icon="🔎", layout="wide")
+        st.set_page_config(page_title=APP_NAME, page_icon=APP_PAGE_ICON, layout="wide")
+        if TESSERACT_CMD:
+            pytesseract.pytesseract.tesseract_cmd = TESSERACT_CMD
         apply_styles()
         self.texto = ""
         self.analisar_texto = False
@@ -53,7 +56,7 @@ class OCR:
             self.mostrar_analise()
 
     def extrair_texto(self, img):
-        texto = pytesseract.image_to_string(img)
+        texto = pytesseract.image_to_string(img, **get_ocr_options())
         return texto
 
     def mostrar_analise(self):

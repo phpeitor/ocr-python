@@ -2,8 +2,8 @@ import streamlit as st
 from html import escape
 from pathlib import Path
 
+from config import APP_NAME
 
-APP_NAME = "TextLens"
 ASSETS_DIR = Path(__file__).resolve().parent.parent / "assets"
 
 

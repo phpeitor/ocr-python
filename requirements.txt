@@ -1,3 +1,4 @@
 streamlit
 pillow
 pytesseract
+python-dotenv
