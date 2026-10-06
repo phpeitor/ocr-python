@@ -1,5 +1,5 @@
 ## TextLens OCR 🐍
-[![forthebadge](http://forthebadge.com/images/badges/made-with-python.svg))](https://www.linkedin.com/in/drphp/)
+[![forthebadge](http://forthebadge.com/images/badges/made-with-python.svg)](https://www.linkedin.com/in/drphp/)
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
 [![Video](https://img.youtube.com/vi/K9n4jRPH-94/0.jpg)](https://www.youtube.com/watch?v=K9n4jRPH-94)  
@@ -17,6 +17,7 @@
 - Soporta tokens con simbolos como `S/` y `$`.
 - Usa variables de entorno con `.env`.
 - Tiene estilos separados en `assets/styles.css`.
+- Incluye temas `System`, `Light` y `Dark` desde el menu de Streamlit.
 
 ## Requisitos
 
@@ -136,6 +137,12 @@ http://localhost:8501
 ```
 
 Abre esa URL en tu navegador.
+
+### Cambiar tema visual
+
+Abre el menu de tres puntos de Streamlit, selecciona **Settings** y elige
+`System`, `Light` o `Dark`. La interfaz pixel-game adapta automaticamente sus
+fondos, tarjetas, texto, metricas y colores de contraste al tema seleccionado.
 
 ## Como Usar
 

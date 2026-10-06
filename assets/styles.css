@@ -1,16 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap");
 
 :root {
-    --ink: #f4f7e9;
-    --muted: #9da99e;
-    --surface: #111a23;
-    --surface-raised: #182530;
-    --line: #334653;
+    --ink: inherit;
+    --muted: color-mix(in srgb, currentColor 62%, transparent);
+    --surface: transparent;
+    --surface-raised: color-mix(in srgb, currentColor 9%, transparent);
+    --line: color-mix(in srgb, currentColor 22%, transparent);
     --cyan: #64f4e8;
     --lime: #d8ff63;
     --pink: #ff6b9d;
     --yellow: #ffd166;
-    --shadow: #05090d;
+    --shadow: color-mix(in srgb, currentColor 38%, transparent);
+    --page: transparent;
+    --input: color-mix(in srgb, currentColor 8%, transparent);
 }
 
 .stApp {
@@ -18,9 +20,9 @@
         linear-gradient(rgba(100, 244, 232, 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(100, 244, 232, 0.035) 1px, transparent 1px),
         radial-gradient(circle at 80% 0%, rgba(216, 255, 99, 0.10), transparent 28rem),
-        #0b1117;
+        var(--page);
     background-size: 24px 24px, 24px 24px, auto, auto;
-    color: var(--ink);
+    color: inherit;
     font-family: "Space Mono", "Courier New", monospace;
 }
 
@@ -29,7 +31,7 @@
 }
 
 [data-testid="stSidebar"] {
-    background: #0c141b;
+    background: inherit;
     border-right: 2px solid var(--line);
 }
 
@@ -59,7 +61,7 @@
     padding: 2.2rem;
     border: 2px solid var(--cyan);
     border-radius: 4px;
-    background: linear-gradient(135deg, rgba(24, 37, 48, 0.98), rgba(13, 22, 30, 0.98));
+    background: linear-gradient(135deg, var(--surface-raised), var(--surface));
     box-shadow: 8px 8px 0 var(--shadow), 0 0 28px rgba(100, 244, 232, 0.12);
     margin-bottom: 1.7rem;
 }
@@ -88,13 +90,13 @@
 }
 
 .hero h2 {
-    color: var(--ink) !important;
+    color: inherit !important;
     font-family: "Press Start 2P", "Courier New", monospace;
     font-size: clamp(1.25rem, 4vw, 2.7rem);
     line-height: 1.5;
     letter-spacing: 0.02em;
     margin: 0;
-    text-shadow: 4px 4px 0 #263640;
+    text-shadow: 4px 4px 0 var(--shadow);
 }
 
 .hero p {
@@ -109,7 +111,7 @@ h1, h2, h3, h4,
 div[data-testid="stMarkdownContainer"] h1,
 div[data-testid="stMarkdownContainer"] h2,
 div[data-testid="stMarkdownContainer"] h3 {
-    color: var(--ink) !important;
+    color: inherit !important;
     font-family: "Press Start 2P", "Courier New", monospace;
 }
 
@@ -165,9 +167,9 @@ div[data-testid="stWidgetLabel"] p {
     min-height: 190px;
     border: 2px solid var(--cyan);
     border-radius: 3px;
-    background: #080e13;
+    background: var(--input);
     padding: 1.15rem;
-    color: var(--ink);
+    color: inherit;
     font-size: 0.82rem;
     line-height: 1.8;
     white-space: pre-wrap;
@@ -222,9 +224,9 @@ button:disabled,
 .stButton > button:disabled,
 .stDownloadButton > button:disabled,
 div[data-testid="stDownloadButton"] button:disabled {
-    background: #33414a !important;
-    border-color: #52616a !important;
-    color: #9da99e !important;
+    background: color-mix(in srgb, currentColor 18%, transparent) !important;
+    border-color: var(--line) !important;
+    color: var(--muted) !important;
     box-shadow: none !important;
 }
 
@@ -263,6 +265,28 @@ div[data-testid="stMetricValue"] {
 
 hr {
     border-color: var(--line) !important;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --cyan: #087f78;
+        --lime: #527500;
+        --pink: #b51f5b;
+        --yellow: #936800;
+        --shadow: rgba(24, 39, 48, 0.24);
+    }
+
+    .stApp {
+        background:
+            linear-gradient(rgba(8, 127, 120, 0.06) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(8, 127, 120, 0.06) 1px, transparent 1px),
+            radial-gradient(circle at 80% 0%, rgba(82, 117, 0, 0.10), transparent 28rem),
+            var(--page);
+    }
+
+    .hero {
+        box-shadow: 8px 8px 0 var(--shadow), 0 0 28px rgba(8, 127, 120, 0.12);
+    }
 }
 
 @media (max-width: 760px) {
