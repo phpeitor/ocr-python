@@ -188,6 +188,21 @@ div[data-testid="stFileUploader"] section:hover {
     background: rgba(100, 244, 232, 0.08);
 }
 
+div[data-testid="stTextArea"] textarea {
+    border: 2px solid var(--line) !important;
+    border-radius: 3px !important;
+    background: var(--input) !important;
+    color: inherit !important;
+    font-family: "Space Mono", "Courier New", monospace !important;
+    font-size: 0.72rem !important;
+    line-height: 1.7 !important;
+}
+
+div[data-testid="stTextArea"] textarea:focus {
+    border-color: var(--cyan) !important;
+    box-shadow: 0 0 0 1px var(--cyan) !important;
+}
+
 button,
 button[kind="primary"],
 button[kind="secondary"],

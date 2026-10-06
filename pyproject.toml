@@ -22,4 +22,4 @@ textlens = "textlens.app:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-textlens = ["data/*.txt", "assets/*.css"]
+textlens = ["assets/*.css"]

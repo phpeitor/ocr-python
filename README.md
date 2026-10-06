@@ -13,7 +13,8 @@
 - Permite descargar el texto detectado en `.txt`.
 - Detecta documentos de identidad de 8 digitos.
 - Detecta fechas con formato `dd/mm/yyyy`.
-- Clasifica palabras usando listas editables en `functions/palabras_buenas.txt` y `functions/palabras_malas.txt`.
+- Permite agregar y eliminar palabras buenas y malas desde dos cajas editables
+  en el panel lateral.
 - Soporta tokens con simbolos como `S/` y `$`.
 - Usa variables de entorno con `.env`.
 - Tiene estilos separados en `assets/styles.css`.
@@ -155,20 +156,30 @@ fondos, tarjetas, texto, metricas y colores de contraste al tema seleccionado.
 
 ## Personalizar Palabras
 
-Edita estos archivos:
+En el panel lateral abre **Diccionario OCR** y edita las cajas **Palabras
+buenas** y **Palabras malas**. Agrega o elimina una palabra o símbolo por
+línea. Los valores iniciales son:
 
 ```text
-functions/palabras_buenas.txt
-functions/palabras_malas.txt
-```
-
-Agrega una palabra o simbolo por linea. Ejemplo:
-
-```text
+# Palabras buenas
+AMAR
+PERRO
+PERU
 GANADOR
 S/
 $
+YAPE
+ACEPTO
+
+# Palabras malas
+ODIO
+IA
+PERDEDOR
+ESTAFA
 ```
+
+Los cambios se aplican al siguiente análisis de la sesión actual. El botón
+**Restaurar palabras iniciales** recupera la configuración incluida por defecto.
 
 ## Estructura Principal
 
@@ -183,7 +194,6 @@ ocr-python/
 │       ├── config.py
 │       ├── ocr.py
 │       ├── ui.py
-│       └── data/
 ├── pyproject.toml
 ├── main.py
 ├── .env.example

@@ -13,7 +13,8 @@ JavaScript independiente ni base de datos.
 - `ocr.py` encapsula la integración con `pytesseract`.
 - `analysis.py` contiene detección y análisis de texto sin dependencias de UI.
 - `config.py` centraliza variables cargadas desde `.env`.
-- Los recursos de análisis viven en `src/textlens/data/`.
+- Las palabras analizables se editan en la interfaz y sus valores iniciales
+  viven como constantes en `analysis.py`.
 - Los estilos se mantienen en `assets/styles.css`.
 - `main.py` es un punto de entrada compatible para `streamlit run main.py`.
 

@@ -2,8 +2,11 @@ import streamlit as st
 from PIL import Image
 
 from .analysis import (
+    DEFAULT_NEGATIVE_KEYWORDS,
+    DEFAULT_POSITIVE_KEYWORDS,
     find_dates,
     find_documents,
+    parse_keywords,
     keyword_summary,
     summarize_documents,
 )
@@ -21,11 +24,11 @@ def render_sentiment(count: int, percentage: float, words: list[str], kind: str)
     st.write(f"Palabras encontradas: {', '.join(words)}")
 
 
-def render_analysis(text: str) -> None:
+def render_analysis(text: str, positive_keywords: set[str], negative_keywords: set[str]) -> None:
     documents = find_documents(text)
     dates = find_dates(text)
-    positive = keyword_summary(text, "palabras_buenas.txt")
-    negative = keyword_summary(text, "palabras_malas.txt")
+    positive = keyword_summary(text, positive_keywords)
+    negative = keyword_summary(text, negative_keywords)
 
     st.divider()
     st.subheader("Resumen del analisis")
@@ -51,6 +54,37 @@ def render_analysis(text: str) -> None:
         render_sentiment(*negative, "negativas")
 
 
+def render_keyword_editor() -> tuple[set[str], set[str]]:
+    if "positive_keywords_text" not in st.session_state:
+        st.session_state.positive_keywords_text = "\n".join(DEFAULT_POSITIVE_KEYWORDS)
+    if "negative_keywords_text" not in st.session_state:
+        st.session_state.negative_keywords_text = "\n".join(DEFAULT_NEGATIVE_KEYWORDS)
+
+    with st.sidebar.expander("Diccionario OCR", expanded=True):
+        st.caption("Una palabra o símbolo por línea")
+        st.text_area(
+            "Palabras buenas",
+            key="positive_keywords_text",
+            height=150,
+            help="Se buscarán como coincidencias positivas en el texto detectado.",
+        )
+        st.text_area(
+            "Palabras malas",
+            key="negative_keywords_text",
+            height=120,
+            help="Se buscarán como coincidencias negativas en el texto detectado.",
+        )
+        if st.button("Restaurar palabras iniciales", use_container_width=True):
+            st.session_state.positive_keywords_text = "\n".join(DEFAULT_POSITIVE_KEYWORDS)
+            st.session_state.negative_keywords_text = "\n".join(DEFAULT_NEGATIVE_KEYWORDS)
+            st.rerun()
+
+    return (
+        parse_keywords(st.session_state.positive_keywords_text),
+        parse_keywords(st.session_state.negative_keywords_text),
+    )
+
+
 def main() -> None:
     st.set_page_config(
         page_title=settings.app_name,
@@ -64,6 +98,7 @@ def main() -> None:
     st.sidebar.title(settings.app_name)
     st.sidebar.caption("Panel de analisis OCR")
     analyze = st.sidebar.toggle("Analizar contenido", value=True)
+    positive_keywords, negative_keywords = render_keyword_editor()
 
     left_column, right_column = st.columns([0.95, 1.25], gap="large")
     with left_column:
@@ -93,7 +128,7 @@ def main() -> None:
         )
 
     if analyze:
-        render_analysis(text)
+        render_analysis(text, positive_keywords, negative_keywords)
 
 
 if __name__ == "__main__":
