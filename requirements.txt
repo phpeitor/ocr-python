@@ -1,4 +1,1 @@
-streamlit
-pillow
-pytesseract
-python-dotenv
+-e .

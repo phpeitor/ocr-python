@@ -75,10 +75,10 @@ Si PowerShell bloquea la activacion, ejecuta una vez:
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-4. Instala dependencias:
+4. Instala dependencias y el paquete local:
 
 ```powershell
-python -m pip install -r requirements.txt
+python -m pip install -e .
 ```
 
 ## Configuracion .env
@@ -94,8 +94,9 @@ Variables disponibles:
 ```env
 APP_NAME=TextLens
 APP_PAGE_ICON=🔎
-OCR_LANGUAGE=
-TESSERACT_CMD=
+OCR_LANGUAGE=spa
+TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
+MAX_UPLOAD_SIZE_MB=5
 ```
 
 Uso de cada variable:
@@ -104,6 +105,7 @@ Uso de cada variable:
 - `APP_PAGE_ICON`: icono de la pestana del navegador.
 - `OCR_LANGUAGE`: idioma usado por Tesseract, por ejemplo `spa` para espanol o `eng` para ingles.
 - `TESSERACT_CMD`: ruta al ejecutable de Tesseract si no esta en PATH.
+- `MAX_UPLOAD_SIZE_MB`: limite de tamano para imagenes subidas.
 
 Ejemplo para OCR en espanol:
 
@@ -119,6 +121,12 @@ Desde la raiz del proyecto:
 
 ```powershell
 python -m streamlit run main.py
+```
+
+Tambien puedes usar el comando instalado por el paquete:
+
+```powershell
+textlens
 ```
 
 Streamlit mostrara una URL local similar a:
@@ -161,15 +169,16 @@ $
 ocr-python/
 ├── assets/
 │   └── styles.css
-├── functions/
-│   ├── functions.py
-│   ├── text_analysis.py
-│   ├── ui.py
-│   ├── palabras_buenas.txt
-│   └── palabras_malas.txt
-├── config.py
+├── src/
+│   └── textlens/
+│       ├── analysis.py
+│       ├── app.py
+│       ├── config.py
+│       ├── ocr.py
+│       ├── ui.py
+│       └── data/
+├── pyproject.toml
 ├── main.py
-├── requirements.txt
 ├── .env.example
 └── README.md
 ```

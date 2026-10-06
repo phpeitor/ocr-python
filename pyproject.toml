@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "textlens-ocr"
+version = "1.0.0"
+description = "Aplicacion Streamlit para extraer y analizar texto con Tesseract OCR."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "Pillow>=10.0",
+    "pytesseract>=0.3.10",
+    "python-dotenv>=1.0",
+    "streamlit>=1.30",
+]
+
+[project.scripts]
+textlens = "textlens.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+textlens = ["data/*.txt", "assets/*.css"]
