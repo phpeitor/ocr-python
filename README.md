@@ -2,7 +2,11 @@
 [![forthebadge](http://forthebadge.com/images/badges/made-with-python.svg)](https://www.linkedin.com/in/drphp/)
 [![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](https://www.linkedin.com/in/drphp/)
 
-[![Video](https://img.youtube.com/vi/K9n4jRPH-94/0.jpg)](https://www.youtube.com/watch?v=K9n4jRPH-94)  
+<a href="https://www.instagram.com/amvsoft.tech/">
+  <img src="https://cdn.dribbble.com/userupload/16288591/file/original-3925e50a24ee40dfc622624e3579b7d8.jpg" alt="instagram" width="600">
+</a>
+
+`Hello Everyone 🙌`
 
 [![Video Demo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=K9n4jRPH-94)
 
@@ -158,7 +162,6 @@ ocr-python/
 ├── .env.example
 ├── main.py               # Punto de entrada compatible
 ├── pyproject.toml        # Metadatos y dependencias
-├── requirements.txt
 └── README.md
 ```
 
