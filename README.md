@@ -6,8 +6,7 @@
   <img src="https://cdn.dribbble.com/userupload/16288591/file/original-3925e50a24ee40dfc622624e3579b7d8.jpg" alt="instagram" width="600">
 </a>
 
-`Hello Everyone 🙌`
-[![Video Demo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=K9n4jRPH-94)
+[![Video Demo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=K9n4jRPH-94) `Hello Everyone 🙌`
 
 ## Resumen
 
