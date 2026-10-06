@@ -6,92 +6,80 @@
 
 [![Video Demo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=K9n4jRPH-94)
 
-## Caracteristicas
+## Resumen
 
-- Carga imagenes `PNG`, `JPG` y `JPEG` desde el navegador.
-- Extrae texto con `pytesseract` y Tesseract OCR.
-- Permite descargar el texto detectado en `.txt`.
-- Detecta documentos de identidad de 8 digitos.
-- Detecta fechas con formato `dd/mm/yyyy`.
-- Permite agregar y eliminar palabras buenas y malas desde dos cajas editables
-  en el panel lateral.
-- Soporta tokens con simbolos como `S/` y `$`.
-- Usa variables de entorno con `.env`.
-- Tiene estilos separados en `assets/styles.css`.
-- Incluye temas `System`, `Light` y `Dark` desde el menu de Streamlit.
+TextLens es una aplicación local de OCR construida con Python y Streamlit.
+Permite cargar una imagen, extraer su texto con Tesseract y analizar
+documentos de identidad, fechas y palabras configurables.
+
+La aplicación procesa las imágenes durante la sesión y no requiere base de
+datos ni un backend adicional.
+
+## Funcionalidades
+
+- OCR para imágenes `PNG`, `JPG` y `JPEG`.
+- Configuración de idioma mediante Tesseract (`spa`, `eng`, etc.).
+- Descarga del texto reconocido como archivo `.txt`.
+- Detección de documentos de identidad de ocho dígitos.
+- Detección de fechas con formato `dd/mm/yyyy`.
+- Diccionario editable de palabras buenas y malas desde el panel lateral.
+- Soporte para tokens especiales como `S/` y `$`.
+- Temas `System`, `Light` y `Dark`.
+- Límite configurable para el tamaño de las imágenes.
 
 ## Requisitos
 
+- Windows, macOS o Linux.
 - Python 3.10 o superior.
-- pip.
-- Tesseract OCR instalado en el sistema.
+- Tesseract OCR.
+- Modelo de idioma de Tesseract correspondiente al valor de `OCR_LANGUAGE`.
 
-## Instalacion Tesseract OCR
+## Instalación de Tesseract en Windows
 
-### Windows
-
-1. Descarga el instalador desde:
-
-```text
-https://github.com/UB-Mannheim/tesseract/wiki
-```
-
-2. Instala Tesseract OCR.
-3. Asegurate de que el ejecutable quede disponible en el PATH.
-4. Verifica la instalacion:
+1. Descarga el instalador desde la [página de Tesseract para Windows](https://github.com/UB-Mannheim/tesseract/wiki).
+2. Instala Tesseract y el paquete de idioma español (`spa`) si procesarás
+   documentos en español.
+3. Comprueba la instalación:
 
 ```powershell
 tesseract --version
+tesseract --list-langs
 ```
 
-Si el comando no funciona, configura la ruta en tu archivo `.env`:
+Si Tesseract no está en `PATH`, define su ruta en `.env`:
 
 ```env
 TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
 ```
 
-## Instalacion Proyecto
+Para español debe aparecer `spa` en la salida de `tesseract --list-langs`.
 
-1. Clona el repositorio:
+## Instalación del proyecto
 
-```powershell
-git clone <url-del-repositorio>
-cd ocr-python
-```
-
-2. Crea un entorno virtual:
+Desde la raíz del repositorio:
 
 ```powershell
 python -m venv .venv
-```
-
-3. Activa el entorno virtual:
-
-```powershell
 .\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e .
 ```
 
-Si PowerShell bloquea la activacion, ejecuta una vez:
+Si PowerShell bloquea la activación del entorno:
 
 ```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 
-4. Instala dependencias y el paquete local:
+## Configuración
+
+Copia la plantilla y ajusta los valores locales:
 
 ```powershell
-python -m pip install -e .
+Copy-Item .env.example .env
 ```
 
-## Configuracion .env
-
-El proyecto incluye `.env.example` como plantilla. Crea tu archivo `.env` local:
-
-```powershell
-copy .env.example .env
-```
-
-Variables disponibles:
+Configuración recomendada para español:
 
 ```env
 APP_NAME=TextLens
@@ -101,129 +89,119 @@ TESSERACT_CMD=C:\Program Files\Tesseract-OCR\tesseract.exe
 MAX_UPLOAD_SIZE_MB=5
 ```
 
-Uso de cada variable:
+| Variable | Descripción | Valor predeterminado |
+| --- | --- | --- |
+| `APP_NAME` | Nombre mostrado en la aplicación. | `TextLens` |
+| `APP_PAGE_ICON` | Icono de la página de Streamlit. | `🔎` |
+| `OCR_LANGUAGE` | Idioma utilizado por Tesseract. | Sin idioma explícito |
+| `TESSERACT_CMD` | Ruta del ejecutable de Tesseract. | `PATH` del sistema |
+| `MAX_UPLOAD_SIZE_MB` | Tamaño máximo de una imagen. | `5` |
 
-- `APP_NAME`: nombre mostrado en la app.
-- `APP_PAGE_ICON`: icono de la pestana del navegador.
-- `OCR_LANGUAGE`: idioma usado por Tesseract, por ejemplo `spa` para espanol o `eng` para ingles.
-- `TESSERACT_CMD`: ruta al ejecutable de Tesseract si no esta en PATH.
-- `MAX_UPLOAD_SIZE_MB`: limite de tamano para imagenes subidas.
+No subas `.env` al repositorio. El archivo está excluido mediante
+`.gitignore`.
 
-Ejemplo para OCR en espanol:
-
-```env
-OCR_LANGUAGE=spa
-```
-
-Para usar `spa`, debes tener instalado el paquete de idioma espanol de Tesseract.
-
-## Ejecutar App
-
-Desde la raiz del proyecto:
+## Ejecución
 
 ```powershell
 python -m streamlit run main.py
 ```
 
-Tambien puedes usar el comando instalado por el paquete:
+También está disponible el comando instalado por el paquete:
 
 ```powershell
 textlens
 ```
 
-Streamlit mostrara una URL local similar a:
+Abre la URL que muestre Streamlit, normalmente
+`http://localhost:8501`.
+
+## Uso
+
+1. Carga una imagen desde **Carga tu imagen**.
+2. Revisa la vista previa y espera el resultado del OCR.
+3. Descarga el texto si lo necesitas.
+4. Activa o desactiva **Analizar contenido**.
+5. Consulta DNI, fechas y coincidencias del diccionario.
+
+### Diccionario OCR
+
+En el panel lateral abre **Diccionario OCR**. Añade o elimina una palabra o
+símbolo por línea en **Palabras buenas** y **Palabras malas**. Los valores
+iniciales son:
 
 ```text
-http://localhost:8501
+Buenas: AMAR, PERRO, PERU, GANADOR, S/, $, YAPE, ACEPTO
+Malas:  ODIO, IA, PERDEDOR, ESTAFA
 ```
 
-Abre esa URL en tu navegador.
+Los cambios son válidos durante la sesión actual. **Restaurar palabras
+iniciales** recupera los valores predeterminados.
 
-### Cambiar tema visual
+### Tema visual
 
-Abre el menu de tres puntos de Streamlit, selecciona **Settings** y elige
-`System`, `Light` o `Dark`. La interfaz pixel-game adapta automaticamente sus
-fondos, tarjetas, texto, metricas y colores de contraste al tema seleccionado.
+En el menú de tres puntos de Streamlit, abre **Settings** y selecciona
+`System`, `Light` o `Dark`. El diseño pixel-game adapta sus superficies,
+colores y contraste al tema seleccionado.
 
-## Como Usar
-
-1. Sube una imagen con texto visible.
-2. Revisa la vista previa de la imagen.
-3. Espera la extraccion de texto.
-4. Descarga el texto si lo necesitas.
-5. Activa o desactiva el analisis desde el panel lateral.
-6. Revisa DNI, fechas, palabras positivas y palabras negativas detectadas.
-
-## Personalizar Palabras
-
-En el panel lateral abre **Diccionario OCR** y edita las cajas **Palabras
-buenas** y **Palabras malas**. Agrega o elimina una palabra o símbolo por
-línea. Los valores iniciales son:
-
-```text
-# Palabras buenas
-AMAR
-PERRO
-PERU
-GANADOR
-S/
-$
-YAPE
-ACEPTO
-
-# Palabras malas
-ODIO
-IA
-PERDEDOR
-ESTAFA
-```
-
-Los cambios se aplican al siguiente análisis de la sesión actual. El botón
-**Restaurar palabras iniciales** recupera la configuración incluida por defecto.
-
-## Estructura Principal
+## Estructura
 
 ```text
 ocr-python/
-├── assets/
-│   └── styles.css
-├── src/
-│   └── textlens/
-│       ├── analysis.py
-│       ├── app.py
-│       ├── config.py
-│       ├── ocr.py
-│       ├── ui.py
-├── pyproject.toml
-├── main.py
+├── .ia-context/          # Reglas y estándares del proyecto
+├── assets/styles.css     # Tema visual pixel-game
+├── src/textlens/
+│   ├── analysis.py       # Detección y análisis de texto
+│   ├── app.py            # Interfaz y flujo de Streamlit
+│   ├── config.py         # Configuración desde .env
+│   ├── ocr.py            # Integración con pytesseract
+│   └── ui.py             # Componentes visuales
 ├── .env.example
+├── main.py               # Punto de entrada compatible
+├── pyproject.toml        # Metadatos y dependencias
+├── requirements.txt
 └── README.md
 ```
 
-## Solucion Bugs
+## Desarrollo y validación
+
+Validación rápida:
+
+```powershell
+python -m compileall -q src main.py
+python -m pip install -e .
+```
+
+Para probar la aplicación, inicia Streamlit y procesa imágenes nítidas,
+imágenes sin texto y archivos cercanos al límite configurado.
+
+## Solución de problemas
 
 ### `tesseract is not installed or it's not in your PATH`
 
-Instala Tesseract OCR o define `TESSERACT_CMD` en `.env`.
+Comprueba `tesseract --version` y define `TESSERACT_CMD` en `.env` si el
+ejecutable no está disponible en el `PATH`.
 
-### El OCR no reconoce bien textos en espanol
+### `Failed loading language 'spa'`
 
-Instala el idioma espanol de Tesseract y configura:
+Instala `spa.traineddata` en la carpeta `tessdata` de Tesseract y confirma
+que `tesseract --list-langs` muestre `spa`.
 
-```env
-OCR_LANGUAGE=spa
-```
+### El OCR no reconoce bien el texto
 
-### Cambie estilos y no se ven en el navegador
+Usa imágenes nítidas, con buena iluminación y texto horizontal. Verifica que
+`OCR_LANGUAGE` coincida con el idioma del documento.
 
-Recarga con `Ctrl + F5` o reinicia Streamlit con `Ctrl + C` y luego:
+### La interfaz no refleja cambios de estilos
+
+Reinicia Streamlit con `Ctrl + C` y vuelve a ejecutar:
 
 ```powershell
 python -m streamlit run main.py
 ```
 
-## Tecnologias
+## Tecnologías
 
+- Python
 - Streamlit
 - Pillow
 - pytesseract

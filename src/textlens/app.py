@@ -54,6 +54,11 @@ def render_analysis(text: str, positive_keywords: set[str], negative_keywords: s
         render_sentiment(*negative, "negativas")
 
 
+def reset_keyword_editor() -> None:
+    st.session_state.positive_keywords_text = "\n".join(DEFAULT_POSITIVE_KEYWORDS)
+    st.session_state.negative_keywords_text = "\n".join(DEFAULT_NEGATIVE_KEYWORDS)
+
+
 def render_keyword_editor() -> tuple[set[str], set[str]]:
     if "positive_keywords_text" not in st.session_state:
         st.session_state.positive_keywords_text = "\n".join(DEFAULT_POSITIVE_KEYWORDS)
@@ -74,10 +79,11 @@ def render_keyword_editor() -> tuple[set[str], set[str]]:
             height=120,
             help="Se buscarán como coincidencias negativas en el texto detectado.",
         )
-        if st.button("Restaurar palabras iniciales", use_container_width=True):
-            st.session_state.positive_keywords_text = "\n".join(DEFAULT_POSITIVE_KEYWORDS)
-            st.session_state.negative_keywords_text = "\n".join(DEFAULT_NEGATIVE_KEYWORDS)
-            st.rerun()
+        st.button(
+            "Restaurar palabras iniciales",
+            use_container_width=True,
+            on_click=reset_keyword_editor,
+        )
 
     return (
         parse_keywords(st.session_state.positive_keywords_text),
