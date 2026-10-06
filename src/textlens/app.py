@@ -74,7 +74,7 @@ def main() -> None:
             max_upload_size=settings.max_upload_size_mb,
         )
         if not upload:
-            st.info("Sube una imagen para comenzar el reconocimiento de texto.")
+            st.info("Sube una imagen para comenzar el análisis")
             return
         image = Image.open(upload)
         st.image(image, caption="Vista previa", use_container_width=True)

@@ -21,7 +21,7 @@ def render_header() -> None:
             <div class="eyebrow">OCR inteligente para imagenes</div>
             <h2>{escape(settings.app_name)}</h2>
             <p>Extrae texto desde imagenes, detecta documentos de identidad y resume
-            palabras positivas o negativas dentro del contenido reconocido.</p>
+            palabras positivas o negativas dentro del contenido</p>
         </section>
         """,
         unsafe_allow_html=True,
@@ -32,7 +32,7 @@ def render_feature_cards() -> None:
     st.markdown(
         """
         <div class="feature-grid">
-            <div class="feature-card"><strong>1. Carga imagenes</strong>
+            <div class="feature-card"><strong>1. Carga imágenes</strong>
             <span>Sube PNG, JPG o JPEG con texto visible.</span></div>
             <div class="feature-card"><strong>2. Extrae texto</strong>
             <span>Tesseract OCR convierte la imagen en contenido editable.</span></div>

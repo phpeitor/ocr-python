@@ -1,8 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+    --ink: #f4f7e9;
+    --muted: #9da99e;
+    --surface: #111a23;
+    --surface-raised: #182530;
+    --line: #334653;
+    --cyan: #64f4e8;
+    --lime: #d8ff63;
+    --pink: #ff6b9d;
+    --yellow: #ffd166;
+    --shadow: #05090d;
+}
+
 .stApp {
     background:
-        radial-gradient(circle at top left, rgba(88, 166, 255, 0.20), transparent 34rem),
-        linear-gradient(135deg, #07111f 0%, #111827 48%, #172033 100%);
-    color: #e5edf7;
+        linear-gradient(rgba(100, 244, 232, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 244, 232, 0.035) 1px, transparent 1px),
+        radial-gradient(circle at 80% 0%, rgba(216, 255, 99, 0.10), transparent 28rem),
+        #0b1117;
+    background-size: 24px 24px, 24px 24px, auto, auto;
+    color: var(--ink);
+    font-family: "Space Mono", "Courier New", monospace;
 }
 
 [data-testid="stHeader"] {
@@ -10,48 +29,79 @@
 }
 
 [data-testid="stSidebar"] {
-    background: rgba(8, 13, 25, 0.88);
-    border-right: 1px solid rgba(148, 163, 184, 0.16);
+    background: #0c141b;
+    border-right: 2px solid var(--line);
+}
+
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--lime) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
+    color: var(--muted) !important;
+    font-size: 0.72rem;
 }
 
 .block-container {
-    max-width: 1120px;
-    padding-top: 2.5rem;
+    max-width: 1180px;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
 }
 
 .hero {
-    padding: 2rem;
-    border: 1px solid rgba(148, 163, 184, 0.20);
-    border-radius: 28px;
-    background: linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.72));
-    box-shadow: 0 24px 80px rgba(2, 6, 23, 0.35);
-    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    padding: 2.2rem;
+    border: 2px solid var(--cyan);
+    border-radius: 4px;
+    background: linear-gradient(135deg, rgba(24, 37, 48, 0.98), rgba(13, 22, 30, 0.98));
+    box-shadow: 8px 8px 0 var(--shadow), 0 0 28px rgba(100, 244, 232, 0.12);
+    margin-bottom: 1.7rem;
+}
+
+.hero::after {
+    content: "v1.0 // READY";
+    position: absolute;
+    top: 1rem;
+    right: 1.2rem;
+    color: var(--lime);
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
 }
 
 .eyebrow {
     display: inline-flex;
-    padding: 0.35rem 0.75rem;
-    border-radius: 999px;
-    background: rgba(56, 189, 248, 0.12);
-    color: #7dd3fc;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--pink);
+    border-radius: 2px;
+    color: var(--pink);
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    margin-bottom: 0.9rem;
+    margin-bottom: 1rem;
 }
 
-.hero h1 {
-    color: #f8fafc;
-    font-size: clamp(2.4rem, 6vw, 4.7rem);
-    line-height: 0.95;
+.hero h2 {
+    color: var(--ink) !important;
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: clamp(1.25rem, 4vw, 2.7rem);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
     margin: 0;
+    text-shadow: 4px 4px 0 #263640;
 }
 
 .hero p {
-    color: #cbd5e1;
-    font-size: 1.08rem;
-    max-width: 720px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.8;
+    max-width: 760px;
     margin-top: 1rem;
 }
 
@@ -59,58 +109,81 @@ h1, h2, h3, h4,
 div[data-testid="stMarkdownContainer"] h1,
 div[data-testid="stMarkdownContainer"] h2,
 div[data-testid="stMarkdownContainer"] h3 {
-    color: #f8fafc !important;
+    color: var(--ink) !important;
+    font-family: "Press Start 2P", "Courier New", monospace;
+}
+
+h3 {
+    font-size: 0.8rem !important;
+    line-height: 1.8 !important;
 }
 
 label,
 div[data-testid="stWidgetLabel"],
 div[data-testid="stWidgetLabel"] p {
-    color: #cbd5e1 !important;
+    color: var(--muted) !important;
+    font-size: 0.78rem !important;
 }
 
 .feature-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
-    margin: 1.5rem 0;
+    margin: 1.8rem 0 2rem;
 }
 
-.feature-card, .result-card {
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    border-radius: 22px;
-    background: rgba(15, 23, 42, 0.74);
-    padding: 1.1rem;
+.feature-card {
+    min-height: 100px;
+    border: 2px solid var(--line);
+    border-radius: 3px;
+    background: var(--surface);
+    padding: 1.15rem;
+    box-shadow: 5px 5px 0 var(--shadow);
+    transition: transform 140ms ease, border-color 140ms ease;
 }
 
-.feature-card strong, .result-card strong {
-    color: #f8fafc;
+.feature-card:hover {
+    border-color: var(--cyan);
+    transform: translate(-2px, -2px);
+}
+
+.feature-card strong {
+    color: var(--lime);
     display: block;
-    margin-bottom: 0.3rem;
+    font-size: 0.76rem;
+    line-height: 1.6;
+    margin-bottom: 0.65rem;
 }
 
-.feature-card span, .result-card span {
-    color: #94a3b8;
-    font-size: 0.94rem;
+.feature-card span {
+    color: var(--muted);
+    font-size: 0.72rem;
+    line-height: 1.7;
 }
 
 .text-output {
-    border-left: 4px solid #38bdf8;
-    border-radius: 18px;
-    background: rgba(2, 6, 23, 0.42);
-    padding: 1rem 1.2rem;
-    color: #dbeafe;
+    min-height: 190px;
+    border: 2px solid var(--cyan);
+    border-radius: 3px;
+    background: #080e13;
+    padding: 1.15rem;
+    color: var(--ink);
+    font-size: 0.82rem;
+    line-height: 1.8;
     white-space: pre-wrap;
+    box-shadow: inset 0 0 0 1px rgba(100, 244, 232, 0.12), 5px 5px 0 var(--shadow);
 }
 
 div[data-testid="stFileUploader"] section {
-    border: 1px dashed rgba(125, 211, 252, 0.55);
-    border-radius: 22px;
-    background: rgba(14, 165, 233, 0.08);
+    border: 2px dashed var(--lime);
+    border-radius: 3px;
+    background: rgba(216, 255, 99, 0.04);
+    padding: 1.1rem;
 }
 
 div[data-testid="stFileUploader"] section:hover {
-    border-color: #38bdf8;
-    background: rgba(14, 165, 233, 0.14);
+    border-color: var(--cyan);
+    background: rgba(100, 244, 232, 0.08);
 }
 
 button,
@@ -118,20 +191,18 @@ button[kind="primary"],
 button[kind="secondary"],
 .stButton > button,
 .stDownloadButton > button,
-div.stButton > button,
-div.stDownloadButton > button,
 div[data-testid="baseButton-secondary"],
 div[data-testid="stFileUploader"] button,
-div[data-testid="stFileUploader"] section button,
 div[data-testid="stDownloadButton"] button {
-    border: 0 !important;
-    border-radius: 999px !important;
-    background: linear-gradient(135deg, #38bdf8 0%, #2563eb 100%) !important;
-    color: #ffffff !important;
+    border: 2px solid var(--cyan) !important;
+    border-radius: 2px !important;
+    background: var(--cyan) !important;
+    color: #081116 !important;
+    font-family: "Space Mono", "Courier New", monospace !important;
+    font-size: 0.72rem !important;
     font-weight: 700 !important;
-    letter-spacing: 0.01em;
-    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.28) !important;
-    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+    box-shadow: 4px 4px 0 var(--shadow) !important;
+    transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
 }
 
 button:hover,
@@ -139,54 +210,59 @@ button[kind="primary"]:hover,
 button[kind="secondary"]:hover,
 .stButton > button:hover,
 .stDownloadButton > button:hover,
-div.stButton > button:hover,
-div.stDownloadButton > button:hover,
 div[data-testid="baseButton-secondary"]:hover,
 div[data-testid="stFileUploader"] button:hover,
-div[data-testid="stFileUploader"] section button:hover,
 div[data-testid="stDownloadButton"] button:hover {
-    color: #ffffff !important;
-    filter: brightness(1.08);
-    transform: translateY(-1px);
-    box-shadow: 0 16px 34px rgba(37, 99, 235, 0.38) !important;
-}
-
-button p,
-button span,
-.stButton button p,
-.stButton button span,
-.stDownloadButton button p,
-.stDownloadButton button span,
-div[data-testid="stFileUploader"] button p,
-div[data-testid="stFileUploader"] button span,
-div[data-testid="stDownloadButton"] button p,
-div[data-testid="stDownloadButton"] button span {
-    color: #ffffff !important;
-    font-weight: 700 !important;
+    filter: none !important;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--shadow) !important;
 }
 
 button:disabled,
 .stButton > button:disabled,
 .stDownloadButton > button:disabled,
-div[data-testid="stDownloadButton"] button:disabled,
-div.stButton > button:disabled {
-    background: rgba(71, 85, 105, 0.72) !important;
-    color: rgba(226, 232, 240, 0.70) !important;
+div[data-testid="stDownloadButton"] button:disabled {
+    background: #33414a !important;
+    border-color: #52616a !important;
+    color: #9da99e !important;
     box-shadow: none !important;
-    transform: none;
 }
 
 div[data-testid="stFileUploader"] small,
 div[data-testid="stFileUploader"] p,
 div[data-testid="stFileUploader"] span {
-    color: #cbd5e1 !important;
+    color: var(--muted) !important;
 }
 
 div[data-testid="stMetric"] {
-    border: 1px solid rgba(148, 163, 184, 0.18);
-    border-radius: 18px;
-    background: rgba(15, 23, 42, 0.58);
+    border: 2px solid var(--line);
+    border-radius: 3px;
+    background: var(--surface);
     padding: 1rem;
+    box-shadow: 4px 4px 0 var(--shadow);
+}
+
+div[data-testid="stMetricLabel"] p {
+    color: var(--muted) !important;
+    font-size: 0.63rem !important;
+    text-transform: uppercase;
+}
+
+div[data-testid="stMetricValue"] {
+    color: var(--lime) !important;
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 1rem;
+}
+
+[data-testid="stAlert"] {
+    border-radius: 3px;
+    border-width: 2px;
+    background: var(--surface);
+    font-size: 0.76rem;
+}
+
+hr {
+    border-color: var(--line) !important;
 }
 
 @media (max-width: 760px) {
@@ -196,5 +272,9 @@ div[data-testid="stMetric"] {
 
     .hero {
         padding: 1.4rem;
+    }
+
+    .hero::after {
+        display: none;
     }
 }
