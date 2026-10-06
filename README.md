@@ -7,7 +7,6 @@
 </a>
 
 `Hello Everyone 🙌`
-
 [![Video Demo](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube)](https://www.youtube.com/watch?v=K9n4jRPH-94)
 
 ## Resumen
